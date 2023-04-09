@@ -4,12 +4,95 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Zen</title>
+    <title>Bonsai Movies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Yanone+Kaffeesatz:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/app.css">
 </head>
 <body>
     
+    <nav>
+        <div id="nav-container">
+            <div id="nav-left">
+                <div id="mark-container">
+                    <img src="./images/pngkey.com-bonsai-png-7960797.png" alt="">
+                    <h2>Bonsai Movies</h2>
+                </div>
+            </div>
+            <div id="nav-right">
 
+                <div id="searching-bar">
+                    <form action="">
+                    
+                        <input type="text" placeholder="Escriba la pelicula">
+                        <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section id="big-movie">
+            <div id="big-movie-container">
+                <div id="big-movie-container-info">
+                    <h2 id="big-movie-name">Avatar 2</h2>
+                    <p id="big-movie-description">
+                        Jake Sully y Ney'tiri han formado una familia y hacen todo lo posible por permanecer juntos. Sin embargo, deben abandonar su hogar y explorar las region lor</p>
+                        <div id="big-movie-button-container">
+                            <button id="big-movie-button">Saber más</button>
+                        </div>
+
+    
+                </div>
+
+            </div>
+        </section>
+
+        <section id="categories">
+            <h2 class="">Categorias</h2>
+            <div id="categories-container">
+                <div class="category"> <button class="category-button">categoria</button></div>
+                <div class="category"> <button class="category-button">categoria</button></div>
+                <div class="category"> <button class="category-button">categoria</button></div>
+                <div class="category"> <button class="category-button">categoria</button></div>
+                <div class="category"> <button class="category-button">categoria</button></div>
+            </div>
+            <div class="movies">
+                <div class="movie category-movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
+                <div class="movie category-movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
+                <div class="movie category-movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
+                <div class="movie category-movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
+                
+            </div>
+
+            <div id="category-view-more">
+                <button class="view-more-button category-view-more-button">
+                    Ver Más
+                </button>
+            </div>
+        </section>
+
+        <section id="trends-section">
+            <h2 class="section-title">Tendencias</h2>
+            <div class="movies trend-movies">
+                <div class="movie trend-movie"> <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/A3ZbZsmsvNGdprRi2lKgGEeVLEH.jpg" alt="" class="movie-img"></div>
+                <div class="movie trend-movie"> <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rzRb63TldOKdKydCvWJM8B6EkPM.jpg" alt="" class="movie-img"></div>
+                <div class="movie trend-movie"> <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="" class="movie-img"></div>
+                <div class="movie trend-movie"> <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" alt="" class="movie-img"></div>
+                <div class="movie trend-movie"> <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cOaQU5o7mznZTFb4Xs9c1QlwTze.jpg" alt="" class="movie-img"></div>
+                <div class="movie trend-movie"> <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vJU3rXSP9hwUuLeq8IpfsJShLOk.jpg" alt="" class="movie-img"></div>
+            </div>
+            <button class="view-more-button category-view-more-button">
+                Ver Más
+            </button>
+        </section>
+
+
+    </main>
+
+    <script src="https://kit.fontawesome.com/a6672c6b64.js" crossorigin="anonymous"></script>
     <script src="./src/hidden.js"></script>
     <script src="./src/main.js"></script>
 </body>
