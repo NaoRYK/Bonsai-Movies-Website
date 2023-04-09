@@ -13,6 +13,9 @@
     --dark-green:#4b8f8c;
 
 }
+.hidden{
+    display: none;
+}
 body{
     background-color: var(--primary-light);
 }
@@ -41,14 +44,14 @@ nav{
 }
 
 
-#mark-container{
+.mark-container{
     color: var(--light-green);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-items: center;
 }
-#nav-left #mark-container img{
+.mark-container img{
     filter: invert(56%) sepia(30%) saturate(308%) hue-rotate(109deg) brightness(95%) contrast(92%);
     margin-right: 0.3rem;
     height: 2.5rem;
@@ -78,7 +81,7 @@ nav{
 }
 #searching-bar form input{
     font-size: 1rem;
-
+    color: var(--light-green);
     border-radius: 2rem 0rem 0rem 2rem;
     height: 100%;
     background-color: transparent;
@@ -118,7 +121,7 @@ nav{
     justify-self: center;
     width: 80%;
     text-align: center;
-    border-top: solid 2px var(--light-green);
+
     padding-top: 1rem;
 }
 
@@ -127,6 +130,7 @@ nav{
 
 #big-movie-container{
     border-bottom-right-radius: 8rem;
+    background-position: center;
     background-image: url(../images/avatar-img.jpg);
     background-repeat: no-repeat;
     background-color: var(--light-green);
@@ -138,12 +142,12 @@ nav{
     border-bottom-right-radius: 8rem;
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.144);
+    background-color: rgba(19, 10, 10, 0.205);
     display: grid;
     gap: 0.4rem;
     grid-template-columns: 1fr;
     align-content: end;
-    grid-template-rows: 3rem auto 3rem;
+    grid-template-rows:repeat(3, auto);
 }
 
 #big-movie-name{
@@ -235,6 +239,10 @@ nav{
     justify-items: center;
 }
 
+.category-movie{
+    border: solid 4px var(--light-green-2) !important;
+}
+
 .movie{
     overflow: hidden;
     border: solid var(--light-green) 4px;
@@ -267,6 +275,59 @@ nav{
 /* Tendencias */
 
 #trends-section {
+    background-color: var(--light-green-2);
     display: grid;
     justify-items: center;
+}
+
+.trends-view-more-button{
+    background-color: var(--primary-light);
+}
+
+/* Releases */
+
+#releases{
+    display: grid;
+
+    justify-content: center;
+}
+#releases h2{
+    text-align: center;
+}
+
+.release-view-more-button{
+    justify-self: center;
+}
+.release-movie{
+    border-color: var(--light-green-2);
+}
+
+/* Footer */
+
+#footer-container{
+    
+    background-color: var(--light-green-2);
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows:1fr 0.5fr;
+    color: var(--light-green);
+    text-align: center;
+}
+#footer-container h1{
+    margin-bottom: 1rem;
+    height: 2rem;
+    align-self: center;
+}
+
+#footer-mark{
+    display: grid;
+}
+#footer-mark img{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    height: 4rem;
+}
+#footer-mark h2{
+    font-size: 2rem
 }
