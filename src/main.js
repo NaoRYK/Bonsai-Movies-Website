@@ -31,7 +31,7 @@ const getBigMovie = async () =>{
             <button id="big-movie-button">Saber más</button>
         </div>
     `;
-    console.log("Big movie", movies, randomIndex)
+    
 
 
 }
@@ -103,7 +103,7 @@ const getReleasesMovies = async () =>{
 
     }
     
-    console.log("Releases", movies)
+
 }
 
 const chargeNewReleasesMovies = async () => {
@@ -111,7 +111,7 @@ const chargeNewReleasesMovies = async () => {
     https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
     const data = await res.json();
     const movies = data.results;
-    console.log(contadorReleases)
+
     if(contadorReleases < 19){
         for (let index = contadorReleases; index < contadorReleases +4; index++) {
             let movie = movies[index];
@@ -121,7 +121,7 @@ const chargeNewReleasesMovies = async () => {
                 contadorReleases =19;
                 return
             }
-            console.log("Indice:", index, "release2:", contadorReleases2)
+
         }
         contadorReleases =contadorReleases2 +1;
     }
@@ -129,7 +129,7 @@ const chargeNewReleasesMovies = async () => {
         alert("No se pueden cargar mas peliculas")
         return;
     }
-    console.log(contadorReleases)
+    
 
 }
 
