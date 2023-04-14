@@ -1,6 +1,9 @@
 const bigMovieContainer = document.getElementById("big-movie-container");
 const bigMovieContainerInfo = document.getElementById("big-movie-container-info");
 
+const categoriesContainer = document.getElementById("categories-container")
+
+
 const trendsMovieContainer = document.querySelector(".trend-movies")
 const trendsViewMore = document.querySelector(".trends-view-more-button")
 let contador2;
@@ -11,12 +14,22 @@ const releasesMovieContainer = document.getElementById("releases-movies");
 const releasesViewMore = document.querySelector(".release-view-more-button")
 
 
+const api = axios.create({
+    baseURL: 'https://api.themoviedb.org/3/',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    params: {
+      'api_key': API_KEY,
+      "language": "es-ES"
+    },
+  });
+
 //Portada
 
 const getBigMovie = async () =>{
-    const res = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
+    const {data} = await api(`/movie/top_rated`);
 
-    const data = await res.json();
     const movies = data.results;
 
 
@@ -24,12 +37,12 @@ const getBigMovie = async () =>{
     bigMovieContainer.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${movies[randomIndex].poster_path})`;
 
     bigMovieContainerInfo.innerHTML = `
-    <div id="big-movie-container-info">
+
     <h2 id="big-movie-name">${movies[randomIndex].original_title}</h2>
     <p id="big-movie-description">${movies[randomIndex].overview}</p>
         <div id="big-movie-button-container">
             <button id="big-movie-button">Saber más</button>
-        </div>
+        
     `;
     
 
@@ -37,10 +50,28 @@ const getBigMovie = async () =>{
 }
 
 
+//categorias
+const getCategoriesPreview  = async () =>{
+    const {data} = await api(`genre/movie/list?api_key=${API_KEY}&language=en-US`)
+
+
+    const categories = data.genres;
+    console.log(categories)
+
+
+    categories.forEach(category => {
+
+        categoriesContainer.innerHTML += `<div class="category"> <button class="category-button">${category.name}</button></div>`
+        
+    });
+
+}
+
+
 //Trendings
 const getTrendingMovies = async () =>{
-    const res = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key="+ API_KEY)
-    const data = await res.json();
+    const {data} = await api("trending/movie/week?api_key="+ API_KEY)
+
     const movies = data.results;
     
 
@@ -56,8 +87,8 @@ const getTrendingMovies = async () =>{
 
 
 const chargeNewTrendsMovies = async () =>{
-    const res = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key="+ API_KEY)
-    const data = await res.json();
+    const {data} = await api("trending/movie/week?api_key="+ API_KEY)
+
     const movies = data.results;
 
     if(contador <19){
@@ -90,9 +121,7 @@ const chargeNewTrendsMovies = async () =>{
 let contadorReleases2;
 let contadorReleases = 5;
 const getReleasesMovies = async () =>{
-    const res = await fetch(`
-    https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
-    const data = await res.json();
+    const {data} = await api(`movie/upcoming`)
     const movies = data.results;
 
     for (let index = 0; index < 4; index++) {
@@ -107,9 +136,8 @@ const getReleasesMovies = async () =>{
 }
 
 const chargeNewReleasesMovies = async () => {
-    const res = await fetch(`
-    https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
-    const data = await res.json();
+    const {data} = await api(`movie/upcoming`)
+
     const movies = data.results;
 
     if(contadorReleases < 19){
@@ -140,8 +168,10 @@ releasesViewMore.addEventListener("click", chargeNewReleasesMovies)
 
 function init(){
     getBigMovie();
+    getCategoriesPreview();
     getTrendingMovies();
     getReleasesMovies();
+    
 
 }
 window.addEventListener("load",init )

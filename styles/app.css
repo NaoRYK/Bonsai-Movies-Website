@@ -161,6 +161,8 @@ nav{
     color: var(--primary-light);
     margin-left: 0.5rem;
     width: 90%;
+    max-height: 10rem;
+    overflow: scroll;
 }
 #big-movie-button-container{
     height: 100%;
@@ -214,9 +216,16 @@ nav{
     justify-content: space-around;
     align-items: center;
     width: 90%;
+    
+    justify-content: flex-start;
+    overflow-x: scroll;
     margin-bottom: 2rem;
   
 
+}
+.category{
+    margin-inline: 0.2rem;
+    white-space: nowrap;
 }
 
 .category-button{
