@@ -3,6 +3,9 @@ window.addEventListener("DOMContentLoaded", navigator, false)
 
 
 
+
+
+
 function navigator(){
     
     if(location.hash.startsWith('#search='))
@@ -18,7 +21,7 @@ function navigator(){
     else{
         homePage()
     }
-    location.hash;
+
 }
 
 function homePage(){
@@ -27,13 +30,20 @@ function homePage(){
 
     movieDetail.classList.add("hidden")
     categories.classList.add("hidden")
+    searchSection.classList.add("hidden");
     categoryMovieContainer.innerHTML ="";
     sectionsArray.forEach( e => e.classList.remove("hidden"))
 
     movieEventListener();
+    window.scrollTo(0,0)
 }
 function searchPage(){
     console.log("search")
+    searchSection.classList.remove("hidden");
+    movieDetail.classList.add("hidden")
+    categories.classList.add("hidden")
+    sectionsArray.forEach( e => e.classList.add("hidden"))
+    window.scrollTo(0,0)
 }
 function categoryPage(){
 
@@ -41,6 +51,7 @@ function categoryPage(){
         console.log(e)
         e.classList.add("hidden")})
     movieDetail.classList.add("hidden")
+    searchSection.classList.add("hidden");
     categories.classList.remove("hidden");
 
     const [_,categoryData] = location.hash.split('=');
@@ -66,6 +77,7 @@ function categoryPage(){
     }
     
     getMoviesByCategory(categoryID);
+    window.scrollTo(0,0)
 }
 function movieDetailsPage(){
     sectionsArray.forEach( e =>{
@@ -73,9 +85,30 @@ function movieDetailsPage(){
          e.classList.add("hidden")})
     movieDetail.classList.remove("hidden")
     categories.classList.add("hidden")
+    searchSection.classList.add("hidden");
     console.log("movie")
+    window.scrollTo(0,0)
+}
+
+function searchMovie(){
+    
+    const search = searchInput.value;
+
+    console.log("Valor", search)
+    if(search != ""){
+        location.hash = "#search=" + search;
+        searchedTitle.innerHTML = "Resultados de "+ search;
+        
+    }
+    else{
+        alert("Ingrese una busqueda valida")
+    }
+
 }
 
 backArrow.forEach(e=> e.addEventListener("click", homePage))
 
-homeButton.addEventListener("click", homePage)
+homeButton.addEventListener("click", homePage);
+
+
+searchButton.addEventListener("click", searchMovie)

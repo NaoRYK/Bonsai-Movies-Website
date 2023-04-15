@@ -1,9 +1,11 @@
 const homeButton = document.querySelector(".mark-container");
+const searchButton = document.getElementById("search-button");
+const searchInput = document.getElementById("search-input");
 
 
 const bigMovieContainer = document.getElementById("big-movie-container");
 const bigMovieContainerInfo = document.getElementById("big-movie-container-info");
-
+const bigMovieButton = document.getElementById("big-movie-button")
 const categoriesContainer = document.getElementById("categories-container")
 
 
@@ -29,11 +31,18 @@ const categoriesSection = document.getElementById("categories")
 const trendsSection = document.getElementById("trends-section")
 const releasesSection = document.getElementById("releases")
 const sectionsArray = [bigMovieSection,categoriesSection,trendsSection,releasesSection];
+const categories = document.querySelector(".categories-section");
+const searchSection = document.querySelector(".search-section");
+
 
 //categories
-const categories = document.querySelector(".categories-section");
 const categoryMovieContainer = document.getElementById("category-movie-container") 
 const cateogryTitle = document.getElementById("category-title");
+
+
+//search
+const searchedTitle = document.querySelector(".search-title");
+const searchMoviesContainer = document.querySelector("#searcherd-movies");
 
 
 const api = axios.create({
