@@ -8,8 +8,10 @@
     <link rel="shortcut icon" href="./images/bonsai_117773.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Yanone+Kaffeesatz:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Yanone+Kaffeesatz:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/app.css">
+    <link rel="stylesheet" href="./styles/movieDetail.css">
+    <link rel="stylesheet" href="./styles/categories.css">
 </head>
 <body>
     
@@ -38,12 +40,7 @@
         <section id="big-movie">
             <div id="big-movie-container">
                 <div id="big-movie-container-info">
-                    <h2 id="big-movie-name">Avatar 2</h2>
-                    <p id="big-movie-description">
-                        Jake Sully y Ney'tiri han formado una familia y hacen todo lo posible por permanecer juntos. Sin embargo, deben abandonar su hogar y explorar las region lor</p>
-                        <div id="big-movie-button-container">
-                            <button id="big-movie-button">Saber más</button>
-                        </div>
+                   
 
     
                 </div>
@@ -56,19 +53,7 @@
             <div id="categories-container">
                 
             </div>
-            <div class="movies">
-                <div class="movie category-movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
-                <div class="movie category-movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
-                <div class="movie category-movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
-                <div class="movie category-movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
-                
-            </div>
 
-            <div id="category-view-more">
-                <button class="view-more-button category-view-more-button">
-                    Ver Más
-                </button>
-            </div>
         </section>
 
         <section id="trends-section">
@@ -92,6 +77,92 @@
             </button>
         </section>
 
+        <section class="movie-detail hidden">
+            
+            <i class="fa-solid fa-arrow-left back-arrow" ></i>
+            <div class="movie-detail-container">
+                <div class="movie-detail-container-img">
+
+                    <div class="movie-detail-container-img-background">
+
+                    </div>
+
+                </div>
+                <div class="movie-detail-container-info">
+                    <div class="movie-info">
+                        <div class="movie-detail-head">
+                            <div class="movie-title">
+                                <h2>Deadpool</h2>
+                            </div>
+                            <div class="movie-stars">
+                                <i class="fa-solid fa-star" style="color: #ffcf24;"></i>
+                                <p>7.6</p>
+                            </div>
+                        </div>
+
+                        <div class="movie-detail-body">
+                            <div class="movie-detail-container-description">
+                            
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo architecto assumenda, magni veritatis qui sunt reprehenderit soluta nisi saepe distinctio fugit voluptatum dignissimos sit aut incidunt dolorem tempore corporis quisquam autem possimus ratione praesentium maxime porro. Esse sapiente odio molestiae!</p>
+                            </div>
+                        </div>
+
+                        <div class="movie-detail-footer">
+                            <div class="movie-container-genres">
+                                <div class="genre">
+                                    <i class="fa-sharp fa-solid fa-certificate" style="color: #3e5274;"></i>
+                                    <h3>Drama</h3>
+                                </div>
+                                <div class="genre">
+                                    <i class="fa-sharp fa-solid fa-certificate" style="color: #3e5274;"></i>
+                                    <h3>Drama</h3>
+                                </div>
+                                <div class="genre">
+                                    <i class="fa-sharp fa-solid fa-certificate" style="color: #3e5274;"></i>
+                                    <h3>Drama</h3>
+                                </div>
+                                <div class="genre">
+                                    <i class="fa-sharp fa-solid fa-certificate" style="color: #3e5274;"></i>
+                                    <h3>Drama</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <div class="movie-detail-container-similarMovies">
+                    <h2>Peliculas Similares</h2>
+                    <div class="similarMovies-container">
+                        <div class="movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
+                        <div class="movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
+                        <div class="movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
+                        <div class="movie"> <img src="./images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg" alt="" class="movie-img"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories-section">
+            <div class="category-container">
+                <h1 id="category-title">Accion</h1>
+                <div id="category-movies">
+                    <div class="movies" id="category-movie-container">
+                        
+                        
+                    </div>
+                </div>
+                
+
+    
+                <div id="category-view-more">
+                    <i class="fa-solid fa-arrow-left back-arrow" id="category-back-arrow"></i>
+                    <button class="view-more-button category-view-more-button">
+                        Ver Más
+                    </button>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div id="footer-container">
@@ -103,11 +174,17 @@
             <h1>Pagina creada con 💚 por NaoRYK</h1>
         </div>
     </footer>
+
     
+
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script src="https://kit.fontawesome.com/a6672c6b64.js" crossorigin="anonymous"></script>
+
     <script src="./src/hidden.js"></script>
+
     <script src="./src/main.js"></script>
+    <script src="./src/navigation.js"></script>
 </body>
 </html>

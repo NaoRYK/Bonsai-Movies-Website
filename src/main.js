@@ -1,3 +1,6 @@
+const homeButton = document.querySelector(".mark-container");
+
+
 const bigMovieContainer = document.getElementById("big-movie-container");
 const bigMovieContainerInfo = document.getElementById("big-movie-container-info");
 
@@ -12,6 +15,25 @@ let contador = 5;
 
 const releasesMovieContainer = document.getElementById("releases-movies");
 const releasesViewMore = document.querySelector(".release-view-more-button")
+
+
+
+//Details
+const movieDetail = document.querySelector(".movie-detail");
+const backArrow =  document.querySelectorAll(".back-arrow")
+
+
+//Sections
+const bigMovieSection = document.getElementById("big-movie")
+const categoriesSection = document.getElementById("categories")
+const trendsSection = document.getElementById("trends-section")
+const releasesSection = document.getElementById("releases")
+const sectionsArray = [bigMovieSection,categoriesSection,trendsSection,releasesSection];
+
+//categories
+const categories = document.querySelector(".categories-section");
+const categoryMovieContainer = document.getElementById("category-movie-container") 
+const cateogryTitle = document.getElementById("category-title");
 
 
 const api = axios.create({
@@ -45,14 +67,14 @@ const getBigMovie = async () =>{
         
     `;
     
-
+    movieEventListener()
 
 }
 
 
 //categorias
 const getCategoriesPreview  = async () =>{
-    const {data} = await api(`genre/movie/list?api_key=${API_KEY}&language=en-US`)
+    const {data} = await api(`genre/movie/list`)
 
 
     const categories = data.genres;
@@ -61,18 +83,22 @@ const getCategoriesPreview  = async () =>{
 
     categories.forEach(category => {
 
-        categoriesContainer.innerHTML += `<div class="category"> <button class="category-button">${category.name}</button></div>`
+        categoriesContainer.innerHTML += `<div class="category"> <button class="category-button" id=${category.id}>${category.name}</button></div>`
         
     });
+    const categoriesButtons = document.querySelectorAll(".category-button");
+    categoriesButtons.forEach(btn => btn.addEventListener("click", ()=> location.hash = `#category=${btn.id}-${btn.textContent}`))
+    
 
 }
 
 
 //Trendings
 const getTrendingMovies = async () =>{
-    const {data} = await api("trending/movie/week?api_key="+ API_KEY)
+    const {data} = await api("trending/movie/week")
 
     const movies = data.results;
+    console.log(movies)
     
 
     for (let index = 0; index < 4; index++) {
@@ -80,14 +106,16 @@ const getTrendingMovies = async () =>{
         trendsMovieContainer.innerHTML += ` <div class="movie trend-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
         
     }
+    movieEventListener()
     return movies;
 
 }
 
+console.log(backArrow)
 
 
 const chargeNewTrendsMovies = async () =>{
-    const {data} = await api("trending/movie/week?api_key="+ API_KEY)
+    const {data} = await api("trending/movie/week")
 
     const movies = data.results;
 
@@ -99,10 +127,12 @@ const chargeNewTrendsMovies = async () =>{
             contador2 = index;
             if(contador2 >= 19){
                 contador =19;
+                movieEventListener()
                 return
             }
 
         }
+        movieEventListener()
         contador = contador2 +1;
 
     }
@@ -131,6 +161,8 @@ const getReleasesMovies = async () =>{
 
 
     }
+    movieEventListener()
+    
     
 
 }
@@ -145,12 +177,15 @@ const chargeNewReleasesMovies = async () => {
             let movie = movies[index];
             contadorReleases2 = index;
             releasesMovieContainer.innerHTML += ` <div class="movie release-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+            
             if(contadorReleases2 >= 19){
                 contadorReleases =19;
+                movieEventListener()
                 return
             }
 
         }
+        movieEventListener()
         contadorReleases =contadorReleases2 +1;
     }
     else{
@@ -162,16 +197,54 @@ const chargeNewReleasesMovies = async () => {
 }
 
 
+//Cargar peliculas por categoria
+const getMoviesByCategory = async (genre) =>{
+    const {data} = await api("/discover/movie", 
+    {
+        params:{
+            with_genres:genre,
+        },
+    });
+    
+    console.log("data" + data)
+    const movies = data.results;
+    for (let index = 0; index < 20; index++) {
+        let movie = movies[index];
+        categoryMovieContainer.innerHTML += ` <div class="movie category-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+    }
+    movieEventListener();
+
+}
+
+
 trendsViewMore.addEventListener("click", chargeNewTrendsMovies)
 
 releasesViewMore.addEventListener("click", chargeNewReleasesMovies)
 
 function init(){
-    getBigMovie();
     getCategoriesPreview();
     getTrendingMovies();
     getReleasesMovies();
+    getBigMovie();
     
 
 }
+
+function changeMovieDetailsPage(id){
+    console.log("a")
+    location.hash ="#movie=";
+}
+
 window.addEventListener("load",init )
+
+
+function movieEventListener(){
+    
+        let Movie = document.querySelectorAll(".movie");
+        for (const movie of Movie) {
+            movie.addEventListener("click", changeMovieDetailsPage)
+        }
+   
+
+}
+

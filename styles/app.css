@@ -14,7 +14,7 @@
 
 }
 .hidden{
-    display: none;
+    display: none !important;
 }
 body{
     background-color: var(--primary-light);
@@ -130,7 +130,7 @@ nav{
 #big-movie-container{
     border-bottom-right-radius: 8rem;
     background-position: center;
-    background-image: url(../images/avatar-img.jpg);
+
     background-repeat: no-repeat;
     background-color: var(--light-green);
     overflow: hidden;
@@ -232,7 +232,7 @@ nav{
     font-size: 5rem;
 
     all: unset;
-    border: solid 1.5px var(--light-green);
+    border: solid 2px var(--light-green);
     border-radius: 2rem;
     padding: 0.5rem;
     background-color: var(--primary-light-reduced);

@@ -1,0 +1,132 @@
+.movie-detail{
+    height: 100%;
+    background-color: var(--primary-light-reduced);
+    width: 100%;
+}
+.movie-detail-container{
+    height: 100%;
+}
+
+.movie-detail-container-img{
+   
+    height: 20rem;
+
+}
+
+.movie-detail .back-arrow{
+    position: absolute;
+    color: var(--light-green);
+    font-size: 2rem;
+    left: 1rem;
+    top: 6rem;
+}
+
+.movie-detail-container-img-background{
+    
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../images/kuf6dutpsT0vSVehic3EZIqkOBt.jpg);
+    background-repeat: no-repeat;
+}
+
+.movie-detail-container-info{
+    display: grid;
+
+}
+
+.movie-info{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+}
+
+.movie-detail-head{
+    padding-top: 2rem;
+    display: grid;
+    align-items: center;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr); 
+    margin-bottom: 0.5rem;   
+}
+
+.movie-title{
+    font-size: 1.6rem;
+    color: var(--light-green);
+    margin-left: 0.4rem;
+
+
+}
+.movie-stars{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-end;
+
+    
+}
+.movie-stars i{
+    color: #d79511;
+}
+.movie-detail-body{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding-bottom: 2rem;
+}
+.movie-detail-container-description{
+    width: 95%;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.movie-detail-footer{
+    margin-bottom: 2rem;
+}
+.movie-container-genres{
+    margin-left: 1rem;
+    display: grid;
+  
+    grid-template-columns: repeat(2, 50%);
+    
+}
+.genre{
+    font-size: 1.3rem;
+    display: flex;
+
+}
+.genre h3{
+    font-weight: 400;
+}
+.genre i{
+    color: var(--light-green) !important;
+    margin-right: .4rem;
+}
+
+.movie-detail-container-similarMovies{
+    text-align: center;
+    font-size: 1.4rem;
+
+}
+.movie-detail-container-similarMovies h2{
+    font-weight: 500;
+}
+.similarMovies-container{
+    background-color: var(--primary-light-reduced);
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.3rem;
+    display: grid;
+    overflow-x: scroll;
+    gap: 0.8rem;
+    grid-template-columns: repeat(4 ,1fr);
+    grid-template-rows: 1fr;
+    padding-bottom: 3rem;
+}
+.similarMovies-container div{
+    width: 9.7rem;
+}

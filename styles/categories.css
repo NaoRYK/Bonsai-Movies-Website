@@ -1,0 +1,24 @@
+.categories-section{
+    border-top: solid 2px var(--light-green);
+}
+
+.category-container{
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--light-green);
+
+}
+#category-title{
+    margin-bottom: 2rem;
+}
+.category-movies{
+    display: grid;
+    margin-top: 2rem;
+}
+#category-back-arrow{
+    position: absolute;
+    left: 2rem;
+    top: 5.8rem;
+    
+}
