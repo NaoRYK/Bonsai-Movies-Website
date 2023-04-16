@@ -1,7 +1,7 @@
 const homeButton = document.querySelector(".mark-container");
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
-
+const searchForm = document.getElementById("search-form")
 
 const bigMovieContainer = document.getElementById("big-movie-container");
 const bigMovieContainerInfo = document.getElementById("big-movie-container-info");
@@ -50,7 +50,8 @@ const cateogryTitle = document.getElementById("category-title");
 
 //search
 const searchedTitle = document.querySelector(".search-title");
-const searchMoviesContainer = document.querySelector("#searcherd-movies");
+const searchMoviesContainer = document.querySelector("#searched-movies");
+const bigSearcherdMoviesContainer = document.querySelector(".searched-movies-container")
 
 
 const api = axios.create({
@@ -123,7 +124,7 @@ const getTrendingMovies = async () =>{
 
     for (let index = 0; index < 4; index++) {
         let movie = movies[index];
-        trendsMovieContainer.innerHTML += ` <div class="movie trend-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+        trendsMovieContainer.innerHTML += ` <div class="movie trend-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
         
     }
     movieEventListener()
@@ -143,7 +144,7 @@ const chargeNewTrendsMovies = async () =>{
         for (let index = contador ; index < contador+ 4; index++) {
             let movie = movies[index];
             
-            trendsMovieContainer.innerHTML += ` <div class="movie trend-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+            trendsMovieContainer.innerHTML += ` <div class="movie trend-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
             contador2 = index;
             if(contador2 >= 19){
                 contador =19;
@@ -176,7 +177,7 @@ const getReleasesMovies = async () =>{
 
     for (let index = 0; index < 4; index++) {
         let movie = movies[index];
-        releasesMovieContainer.innerHTML += ` <div class="movie release-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+        releasesMovieContainer.innerHTML += ` <div class="movie release-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
 
 
 
@@ -196,7 +197,7 @@ const chargeNewReleasesMovies = async () => {
         for (let index = contadorReleases; index < contadorReleases +4; index++) {
             let movie = movies[index];
             contadorReleases2 = index;
-            releasesMovieContainer.innerHTML += ` <div class="movie release-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+            releasesMovieContainer.innerHTML += ` <div class="movie release-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
             
             if(contadorReleases2 >= 19){
                 contadorReleases =19;
@@ -230,7 +231,7 @@ const getMoviesByCategory = async (genre) =>{
     const movies = data.results;
     for (let index = 0; index < 20; index++) {
         let movie = movies[index];
-        categoryMovieContainer.innerHTML += ` <div class="movie category-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+        categoryMovieContainer.innerHTML += ` <div class="movie category-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
     }
     movieEventListener();
 
@@ -295,7 +296,31 @@ const getSimilarMovies = async (id)=>{
 
 }
 
+//Search movie
 
+const getSearchedMovie = async (query) =>{
+
+    const {data} = await api("/search/movie", {
+        params:{
+            query,
+        }
+    });
+    const movies = data.results;
+    searchMoviesContainer.innerHTML = "";
+    console.log("coño", movies)
+
+    if(movies.length > 0){
+        movies.forEach(movie =>{
+            searchMoviesContainer.innerHTML += `                        <div class="movie searched-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
+        })
+    }
+    else{
+        searchMoviesContainer.innerHTML += `                         <h2 class="error-title">No hay peliculas con ese nombre</h2>`  
+    }
+
+
+
+}
 
 
 window.addEventListener("load",init )

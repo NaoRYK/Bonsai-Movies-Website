@@ -35,6 +35,7 @@ function homePage(){
     sectionsArray.forEach( e => e.classList.remove("hidden"))
 
     movieEventListener();
+    searchForm.reset();
     window.scrollTo(0,0)
 }
 function searchPage(){
@@ -43,6 +44,8 @@ function searchPage(){
     movieDetail.classList.add("hidden")
     categories.classList.add("hidden")
     sectionsArray.forEach( e => e.classList.add("hidden"))
+    const [_, searchValue] = location.hash.split("=")
+    getSearchedMovie(searchValue);
     window.scrollTo(0,0)
 }
 function categoryPage(){
@@ -78,6 +81,7 @@ function categoryPage(){
     
     getMoviesByCategory(categoryID);
     window.scrollTo(0,0)
+    searchForm.reset();
 }
 function movieDetailsPage(){
     sectionsArray.forEach( e =>{
@@ -92,7 +96,7 @@ function movieDetailsPage(){
     chargeNewMovieDetailsPage(movieID);
     getSimilarMovies(movieID)
     window.scrollTo(0,0)
-
+    searchForm.reset();
 
 
 }
@@ -105,11 +109,13 @@ function searchMovie(){
     if(search != ""){
         location.hash = "#search=" + search;
         searchedTitle.innerHTML = "Resultados de "+ search;
-        
-    }
+        searchForm.reset();
+    }   
     else{
         alert("Ingrese una busqueda valida")
     }
+
+
 
 }
 

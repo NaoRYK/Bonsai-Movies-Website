@@ -1,3 +1,6 @@
+.search-section{
+    min-height: 54vh;
+}
 .search-title{
     font-size: 2.2rem;
     color: var(--light-green);
@@ -7,4 +10,12 @@
 
 .searched-movies-container{
     margin-bottom: 2rem;
+}
+
+.error-title{
+    margin-top: 5rem;
+    white-space: nowrap;
+    font-size: 2rem;
+    margin-left: 1rem;
+    text-align: center;
 }
