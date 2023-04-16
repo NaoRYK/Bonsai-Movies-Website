@@ -9,11 +9,11 @@ html{
   
 }
 :root{
-    --primary-light:#fffdf7;
-    --primary-light-reduced:#e5e5e5;
-    --light-green:#6C9A8B;
-    --light-green-2:#44edb5;
-    --dark-green:#4b8f8c;
+    --primary-light: #eee;
+    --primary-light-reduced: #ffffff;
+    --light-green: #82864a;
+    --light-green-2: rgb(196 ,196, 174);
+    --dark-green: #000000;
 
 }
 .hidden{
@@ -57,7 +57,7 @@ nav{
     justify-items: center;
 }
 .mark-container img{
-    filter: invert(56%) sepia(30%) saturate(308%) hue-rotate(109deg) brightness(95%) contrast(92%);
+    filter:invert(46%) sepia(67%) saturate(252%) hue-rotate(25deg) brightness(96%) contrast(93%);
     margin-right: 0.3rem;
     height: 4rem;
 }
@@ -186,7 +186,7 @@ nav{
     text-align: center;
     font-size: 1.5rem;
     color: white;
-    background-color: #46d3a48f;
+    background-color: #82864ae5;
 
 }
 
