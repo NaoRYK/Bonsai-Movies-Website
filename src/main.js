@@ -46,7 +46,7 @@ const searchSection = document.querySelector(".search-section");
 //categories
 const categoryMovieContainer = document.getElementById("category-movie-container") 
 const cateogryTitle = document.getElementById("category-title");
-
+const categoryViewMoreButton = document.querySelector(".category-view-more-button")
 
 //search
 const searchedTitle = document.querySelector(".search-title");
@@ -236,6 +236,32 @@ const getMoviesByCategory = async (genre) =>{
     movieEventListener();
 
 }
+let categoryIndex = 2;
+const getNewsMoviesByCategory = async (genre, i) =>{
+
+    const {data} = await api("/discover/movie", 
+    {
+        params:{
+            with_genres:genre,
+            page:i,
+        },
+    });
+    
+    console.log("data" + data)
+    const movies = data.results;
+    for (let index = 0; index < 20; index++) {
+        let movie = movies[index];
+        categoryMovieContainer.innerHTML += ` <div class="movie category-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
+    
+    }
+    categoryIndex++;
+    movieEventListener();
+}
+categoryViewMoreButton.addEventListener("click", ()=>{
+    const [_,categoryData] = location.hash.split('=');
+    const [categoryID,CategoryName ] = categoryData.split("-");
+    getNewsMoviesByCategory(categoryID,categoryIndex)
+})
 
 
 trendsViewMore.addEventListener("click", chargeNewTrendsMovies)
@@ -271,9 +297,19 @@ const chargeNewMovieDetailsPage = async (id) =>{
     data.genres.forEach(genre =>{
     movieContainerGenres.innerHTML += `        <div class="genre">
     <i class="fa-sharp fa-solid fa-certificate" style="color: #3e5274;"></i>
-    <h3 class="movie-genre">${genre.name}</h3>
+    <h3 class="movie-genre" id="${genre.id}">${genre.name}</h3>
  </div>`
 
+
+
+    })
+    const detailMovieGenresButtons = document.querySelectorAll(".movie-genre");
+    console.log(detailMovieGenresButtons)
+    detailMovieGenresButtons.forEach(btn => {
+        btn.addEventListener("click",(e)=>{
+            console.log(e);
+            location.hash = `#category=${e.target.id}-${e.target.textContent}`
+            getMoviesByCategory(e.target.id)})
     })
 
 

@@ -73,7 +73,9 @@
   /* movies */
   .movies {
     grid-template-columns: repeat(4, 18rem);
+    justify-content: center;
   }
+
 
   .movie {
     height: 20rem;
@@ -235,6 +237,13 @@
   }
   .genre{
     font-size: 2rem;
+  }
+  .movie-genre{
+    transition: all 0.4s ease-in-out;
+  }
+  .movie-genre:hover{
+    cursor: pointer;
+    border-bottom: solid 4px white;
   }
   .genre i{
     color: white !important;
