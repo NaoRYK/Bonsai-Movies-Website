@@ -1,0 +1,189 @@
+@media ( min-width: 610px) {
+    html{
+        overflow-x: hidden;
+    }
+    body{
+        overflow-x: none;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    nav{
+        height: 6rem;
+    }
+    #nav-container{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr ;
+        
+    }
+    #nav-left{
+        margin-left: 3rem;
+        align-content: center;
+        justify-content: start;
+        grid-column: 1;
+        grid-row:1;
+    }
+    #nav-left:hover{
+        cursor: pointer;
+    }
+
+    #nav-right{
+        margin-right: 4rem;
+        align-content: center;
+        justify-content: end;
+        grid-column: 2;
+        grid-row:1;
+    }
+    #searching-bar{
+        flex-direction: column;
+    
+        justify-content: center;
+    }
+    #searching-bar form{
+        height: 4.5rem;
+        margin-right: 4rem;
+        width: 25rem;
+    }
+    #searching-bar form input{
+        border: solid 2px var(--light-green);
+        border-radius: 2rem 0rem 0rem 2rem;
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+    }
+    #searching-bar form button{
+        display: flex;
+        width:5rem;
+    }
+    
+    #search-button i{
+        font-size: 2.4rem;
+        align-self: center;
+        justify-self: center;
+   }
+
+   /* movies */
+   .movies{
+
+    grid-template-columns: repeat(4, 18rem);
+   }
+
+   .movie{
+    height: 20rem;
+    width: 16rem;
+    transition: 0.2s all ease-in;
+   }
+   .movie:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    filter:saturate(1.5);
+   }
+
+
+   /* Big Movie */
+   #big-movie{
+    background-color: rgb(196 ,196, 174);
+    justify-content: start;
+    display: flex;
+    border-top: solid 2px var(--light-green);
+   }
+   #big-movie-container{
+
+    background-position: center;
+    background-size:cover;
+    box-shadow: 0px 30px 1rem  rgba(128, 128, 128, 0.439);
+    height: 40rem;
+    width: 30rem;
+    border-radius: 0rem 0rem 8rem 0rem;
+   }
+   #big-movie-name{
+    position: absolute;
+    color: var(--primary-light);
+    top: 10rem;
+    margin-bottom: 1rem;
+    border-bottom: solid 2px var(--primary-light);
+    left: 30rem;
+    
+
+   }
+   #big-movie-description{
+    overflow:auto;
+    position: absolute;
+    width: 55%;
+    max-height: 18rem;
+    font-size: 2rem;
+    top: 17rem;
+    left: 30rem;
+   }
+   #big-movie-button-container{
+    height: 4rem;
+    width: 100%;
+    position: absolute;
+    left: 10rem;
+    top: 37rem;
+   }
+   #big-movie-button{
+    height: 4rem;
+    width: 14rem;
+   }
+   #big-movie-button:hover{
+    cursor: pointer;
+   }
+
+
+   /* Categorias */
+
+   #categories h2{
+    font-size: 4rem;
+   }
+   #categories-container{
+    display: flex;
+    height: 10rem;
+   }
+   .category-button{
+    height: 4rem;
+    width: 6rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+   }
+   .category-button:hover{
+    background-color: var(--light-green);
+    border-color:white ;
+    color: white;
+    
+   }
+
+   /* Tendencias */
+   #trends-section{
+    justify-content: center;
+   }
+   .section-title{
+    font-size: 4rem;
+   }
+
+   .trend-movies{
+    width: 100%;
+   }
+
+   /* Footer */
+
+   #footer-mark{
+    border-bottom: solid 2px var(--light-green);
+    padding-bottom: 1rem;
+   }
+   #footer-mark img{
+    height: 6rem;
+
+   }
+   #footer-mark h2{
+    font-size: 4rem;
+   }
+}
+
+
+@media ( max-width: 1110px) and ( min-width: 610px) {
+        body{
+            background-color: red;}
+}
