@@ -14,7 +14,13 @@ function navigator(){
         
     }
     else if( location.hash.startsWith("#movie=")){
+        
+        
         movieDetailsPage()
+        if(location.hash ==="#movie="){
+            homePage();
+        }
+        
     }
     else if( location.hash.startsWith("#category=")){
         categoryPage()
@@ -46,6 +52,7 @@ function searchPage(){
     categories.classList.add("hidden")
     sectionsArray.forEach( e => e.classList.add("hidden"))
     const [_, searchValue] = location.hash.split("=")
+    searchedTitle.innerHTML = "Resultados de "+ searchValue;
     getSearchedMovie(searchValue);
     window.scrollTo(0,0)
 }
@@ -109,7 +116,7 @@ function searchMovie(){
     console.log("Valor", search)
     if(search != ""){
         location.hash = "#search=" + search;
-        searchedTitle.innerHTML = "Resultados de "+ search;
+
         searchForm.reset();
     }   
     else{

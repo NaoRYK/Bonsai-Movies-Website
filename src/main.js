@@ -311,8 +311,9 @@ const getSearchedMovie = async (query) =>{
 
     if(movies.length > 0){
         movies.forEach(movie =>{
-            searchMoviesContainer.innerHTML += `                        <div class="movie searched-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
+            searchMoviesContainer.innerHTML += `<div class="movie searched-movie" id="${movie.id}"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
         })
+        movieEventListener()
     }
     else{
         searchMoviesContainer.innerHTML += `                         <h2 class="error-title">No hay peliculas con ese nombre</h2>`  
