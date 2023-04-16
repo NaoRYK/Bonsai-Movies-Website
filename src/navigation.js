@@ -11,6 +11,7 @@ function navigator(){
     if(location.hash.startsWith('#search='))
     {
         searchPage()
+        
     }
     else if( location.hash.startsWith("#movie=")){
         movieDetailsPage()
@@ -119,7 +120,11 @@ function searchMovie(){
 
 }
 
-backArrow.forEach(e=> e.addEventListener("click", homePage))
+backArrow.forEach(e=> e.addEventListener("click", ()=>{
+
+    location.hash = window.history.back();
+    window.scrollTo(0,0)
+}))
 
 homeButton.addEventListener("click", homePage);
 
