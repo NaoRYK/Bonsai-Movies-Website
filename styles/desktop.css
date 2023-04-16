@@ -11,6 +11,12 @@
     nav{
         height: 6rem;
     }
+
+    .view-more-button{
+        height: 4rem;
+        width: 10rem;
+        font-size: 2.3rem;
+    }
     #nav-container{
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr ;
@@ -184,6 +190,46 @@
 
 
 @media ( max-width: 1110px) and ( min-width: 610px) {
-        body{
-            background-color: red;}
+
+
+    .movies{
+        grid-template-columns: repeat(2, 10rem);
+        column-gap: 9rem;
+    }
+
+        #big-movie{
+            display: flex;
+            justify-content: center;
+            height: 53rem;
+            width: 100%;
+
+        }
+        #big-movie-container{
+            height: 57%;
+            width: 30rem;
+            border-radius: 0rem 0rem 8rem 8rem;
+        }
+        #big-movie-name{
+            top: 37rem;
+            left: 20%;
+            border: none;
+            text-decoration: underline;
+        }
+        #big-movie-description{
+            top: 43rem;
+            left: 3rem;
+            width: 90%;
+   
+            height: 10rem;
+            min-width: 2%;
+        }
+        #big-movie-button{
+            position: absolute;
+            top: 17rem;
+            right: 50%;
+        }
+
+        /* trends */
+
+
 }
