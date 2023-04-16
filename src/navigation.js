@@ -87,7 +87,13 @@ function movieDetailsPage(){
     categories.classList.add("hidden")
     searchSection.classList.add("hidden");
     console.log("movie")
+    movieContainerGenres.innerHTML ="";
+    const [_,movieID] = location.hash.split('=');
+    chargeNewMovieDetailsPage(movieID);
     window.scrollTo(0,0)
+
+
+
 }
 
 function searchMovie(){

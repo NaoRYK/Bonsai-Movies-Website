@@ -5,7 +5,7 @@ const searchInput = document.getElementById("search-input");
 
 const bigMovieContainer = document.getElementById("big-movie-container");
 const bigMovieContainerInfo = document.getElementById("big-movie-container-info");
-const bigMovieButton = document.getElementById("big-movie-button")
+
 const categoriesContainer = document.getElementById("categories-container")
 
 
@@ -23,6 +23,12 @@ const releasesViewMore = document.querySelector(".release-view-more-button")
 //Details
 const movieDetail = document.querySelector(".movie-detail");
 const backArrow =  document.querySelectorAll(".back-arrow")
+const movieDetailBackground = document.querySelector(".movie-detail-container-img-background");
+const movieDetailTitle  = document.querySelector(".movie-title");
+const movieDetailStars = document.querySelector(".movie-stars-p");
+const movieDetailDescription = document.querySelector(".movie-detail-description");
+const movieContainerGenres = document.querySelector(".movie-container-genres")
+const movieGenre = document.querySelector(".movie-genre")
 
 
 //Sections
@@ -72,10 +78,13 @@ const getBigMovie = async () =>{
     <h2 id="big-movie-name">${movies[randomIndex].original_title}</h2>
     <p id="big-movie-description">${movies[randomIndex].overview}</p>
         <div id="big-movie-button-container">
-            <button id="big-movie-button">Saber más</button>
+            <button id="big-movie-button" class=${movies[randomIndex].id}>Saber más</button>
         
     `;
-    
+    const bigMovieButton = document.getElementById("big-movie-button")
+
+    bigMovieButton.addEventListener("click",()=>{
+        changeMovieDetailsPage(bigMovieButton.className)} ,false) ;
     movieEventListener()
 
 }
@@ -112,7 +121,7 @@ const getTrendingMovies = async () =>{
 
     for (let index = 0; index < 4; index++) {
         let movie = movies[index];
-        trendsMovieContainer.innerHTML += ` <div class="movie trend-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+        trendsMovieContainer.innerHTML += ` <div class="movie trend-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
         
     }
     movieEventListener()
@@ -132,7 +141,7 @@ const chargeNewTrendsMovies = async () =>{
         for (let index = contador ; index < contador+ 4; index++) {
             let movie = movies[index];
             
-            trendsMovieContainer.innerHTML += ` <div class="movie trend-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+            trendsMovieContainer.innerHTML += ` <div class="movie trend-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
             contador2 = index;
             if(contador2 >= 19){
                 contador =19;
@@ -165,7 +174,7 @@ const getReleasesMovies = async () =>{
 
     for (let index = 0; index < 4; index++) {
         let movie = movies[index];
-        releasesMovieContainer.innerHTML += ` <div class="movie release-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+        releasesMovieContainer.innerHTML += ` <div class="movie release-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
 
 
 
@@ -185,7 +194,7 @@ const chargeNewReleasesMovies = async () => {
         for (let index = contadorReleases; index < contadorReleases +4; index++) {
             let movie = movies[index];
             contadorReleases2 = index;
-            releasesMovieContainer.innerHTML += ` <div class="movie release-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+            releasesMovieContainer.innerHTML += ` <div class="movie release-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
             
             if(contadorReleases2 >= 19){
                 contadorReleases =19;
@@ -219,7 +228,7 @@ const getMoviesByCategory = async (genre) =>{
     const movies = data.results;
     for (let index = 0; index < 20; index++) {
         let movie = movies[index];
-        categoryMovieContainer.innerHTML += ` <div class="movie category-movie"> <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
+        categoryMovieContainer.innerHTML += ` <div class="movie category-movie" id="${movie.id}" > <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.original_title}" class="movie-img"></div>`
     }
     movieEventListener();
 
@@ -229,6 +238,8 @@ const getMoviesByCategory = async (genre) =>{
 trendsViewMore.addEventListener("click", chargeNewTrendsMovies)
 
 releasesViewMore.addEventListener("click", chargeNewReleasesMovies)
+
+
 
 function init(){
     getCategoriesPreview();
@@ -240,9 +251,39 @@ function init(){
 }
 
 function changeMovieDetailsPage(id){
-    console.log("a")
-    location.hash ="#movie=";
+    console.log(id)
+    const movieID = id;
+
+    location.hash ="#movie="+movieID;
 }
+
+const chargeNewMovieDetailsPage = async (id) =>{
+    const {data} = await api(`/movie/${id}`);
+    console.log(data);
+
+
+    movieDetailBackground.style.backgroundImage= `url(https://image.tmdb.org/t/p/w500${data.backdrop_path}`;
+    movieDetailStars.innerHTML = data.vote_average.toFixed(2);
+    movieDetailDescription.innerHTML = data.overview;
+    data.genres.forEach(genre =>{
+    movieContainerGenres.innerHTML += `        <div class="genre">
+    <i class="fa-sharp fa-solid fa-certificate" style="color: #3e5274;"></i>
+    <h3 class="movie-genre">${genre.name}</h3>
+ </div>`
+
+    })
+
+
+
+
+    movieDetailTitle.innerHTML = data.title;
+}
+
+const getSimilarMovies = async (id)=>{
+
+    const {data} = await api(`/movie/${id}/similar`)
+}
+
 
 window.addEventListener("load",init )
 
@@ -251,7 +292,9 @@ function movieEventListener(){
     
         let Movie = document.querySelectorAll(".movie");
         for (const movie of Movie) {
-            movie.addEventListener("click", changeMovieDetailsPage)
+            movie.addEventListener("click", (e)=>{
+                e.stopPropagation();
+                changeMovieDetailsPage(e.target.parentNode.id)}, false)
         }
    
 
