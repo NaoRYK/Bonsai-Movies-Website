@@ -90,6 +90,7 @@ function movieDetailsPage(){
     movieContainerGenres.innerHTML ="";
     const [_,movieID] = location.hash.split('=');
     chargeNewMovieDetailsPage(movieID);
+    getSimilarMovies(movieID)
     window.scrollTo(0,0)
 
 

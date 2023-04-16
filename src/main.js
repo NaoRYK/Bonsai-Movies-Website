@@ -30,6 +30,8 @@ const movieDetailDescription = document.querySelector(".movie-detail-description
 const movieContainerGenres = document.querySelector(".movie-container-genres")
 const movieGenre = document.querySelector(".movie-genre")
 
+const similarMoviesContainer = document.querySelector(".similarMovies-container");
+
 
 //Sections
 const bigMovieSection = document.getElementById("big-movie")
@@ -262,7 +264,7 @@ const chargeNewMovieDetailsPage = async (id) =>{
     console.log(data);
 
 
-    movieDetailBackground.style.backgroundImage= `url(https://image.tmdb.org/t/p/w500${data.backdrop_path}`;
+    movieDetailBackground.style.backgroundImage= `url(https://image.tmdb.org/t/p/w500${data.poster_path}`;
     movieDetailStars.innerHTML = data.vote_average.toFixed(2);
     movieDetailDescription.innerHTML = data.overview;
     data.genres.forEach(genre =>{
@@ -280,9 +282,20 @@ const chargeNewMovieDetailsPage = async (id) =>{
 }
 
 const getSimilarMovies = async (id)=>{
-
+    similarMoviesContainer.innerHTML = "";
     const {data} = await api(`/movie/${id}/similar`)
+    console.log("pelis similares", data)
+    movies = data.results;
+    movies.forEach(movie => {
+        similarMoviesContainer.innerHTML += `<div class="movie" id="${movie.id}"><img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
+        
+    });
+    movieEventListener()
+
+
 }
+
+
 
 
 window.addEventListener("load",init )
