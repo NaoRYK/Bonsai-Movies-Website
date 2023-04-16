@@ -33,7 +33,7 @@ function navigator(){
 
 function homePage(){
     location.hash = ("#home");
-    console.log("home")
+    
 
     movieDetail.classList.add("hidden")
     categories.classList.add("hidden")
@@ -46,7 +46,7 @@ function homePage(){
     window.scrollTo(0,0)
 }
 function searchPage(){
-    console.log("search")
+    
     searchSection.classList.remove("hidden");
     movieDetail.classList.add("hidden")
     categories.classList.add("hidden")
@@ -59,7 +59,7 @@ function searchPage(){
 function categoryPage(){
 
     sectionsArray.forEach( e =>{
-        console.log(e)
+        
         e.classList.add("hidden")})
     movieDetail.classList.add("hidden")
     searchSection.classList.add("hidden");
@@ -93,12 +93,12 @@ function categoryPage(){
 }
 function movieDetailsPage(){
     sectionsArray.forEach( e =>{
-         console.log(e)
+         
          e.classList.add("hidden")})
     movieDetail.classList.remove("hidden")
     categories.classList.add("hidden")
     searchSection.classList.add("hidden");
-    console.log("movie")
+    
     movieContainerGenres.innerHTML ="";
     const [_,movieID] = location.hash.split('=');
     chargeNewMovieDetailsPage(movieID);
@@ -113,7 +113,7 @@ function searchMovie(){
     
     const search = searchInput.value;
 
-    console.log("Valor", search)
+    
     if(search != ""){
         location.hash = "#search=" + search;
 

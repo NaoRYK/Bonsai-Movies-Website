@@ -99,7 +99,7 @@ const getCategoriesPreview  = async () =>{
 
 
     const categories = data.genres;
-    console.log(categories)
+    
 
 
     categories.forEach(category => {
@@ -119,7 +119,7 @@ const getTrendingMovies = async () =>{
     const {data} = await api("trending/movie/week")
 
     const movies = data.results;
-    console.log(movies)
+    
     
 
     for (let index = 0; index < 4; index++) {
@@ -132,7 +132,7 @@ const getTrendingMovies = async () =>{
 
 }
 
-console.log(backArrow)
+
 
 
 const chargeNewTrendsMovies = async () =>{
@@ -227,7 +227,7 @@ const getMoviesByCategory = async (genre) =>{
         },
     });
     
-    console.log("data" + data)
+    
     const movies = data.results;
     for (let index = 0; index < 20; index++) {
         let movie = movies[index];
@@ -247,7 +247,7 @@ const getNewsMoviesByCategory = async (genre, i) =>{
         },
     });
     
-    console.log("data" + data)
+    
     const movies = data.results;
     for (let index = 0; index < 20; index++) {
         let movie = movies[index];
@@ -280,7 +280,7 @@ function init(){
 }
 
 function changeMovieDetailsPage(id){
-    console.log(id)
+    
     const movieID = id;
 
     location.hash ="#movie="+movieID;
@@ -288,7 +288,7 @@ function changeMovieDetailsPage(id){
 
 const chargeNewMovieDetailsPage = async (id) =>{
     const {data} = await api(`/movie/${id}`);
-    console.log(data);
+    
 
 
     movieDetailBackground.style.backgroundImage= `url(https://image.tmdb.org/t/p/w500${data.poster_path}`;
@@ -304,10 +304,10 @@ const chargeNewMovieDetailsPage = async (id) =>{
 
     })
     const detailMovieGenresButtons = document.querySelectorAll(".movie-genre");
-    console.log(detailMovieGenresButtons)
+    
     detailMovieGenresButtons.forEach(btn => {
         btn.addEventListener("click",(e)=>{
-            console.log(e);
+            
             location.hash = `#category=${e.target.id}-${e.target.textContent}`
             getMoviesByCategory(e.target.id)})
     })
@@ -321,7 +321,7 @@ const chargeNewMovieDetailsPage = async (id) =>{
 const getSimilarMovies = async (id)=>{
     similarMoviesContainer.innerHTML = "";
     const {data} = await api(`/movie/${id}/similar`)
-    console.log("pelis similares", data)
+    
     movies = data.results;
     movies.forEach(movie => {
         similarMoviesContainer.innerHTML += `<div class="movie" id="${movie.id}"><img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="movie-img"></div>`
@@ -343,7 +343,7 @@ const getSearchedMovie = async (query) =>{
     });
     const movies = data.results;
     searchMoviesContainer.innerHTML = "";
-    console.log("coño", movies)
+    
 
     if(movies.length > 0){
         movies.forEach(movie =>{
