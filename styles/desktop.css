@@ -90,7 +90,7 @@
 
   /* Big Movie */
   #big-movie {
-    background-color: rgb(196, 196, 174);
+    background-color: var(--light-green-2);
     justify-content: start;
     display: flex;
     border-top: solid 2px var(--light-green);
